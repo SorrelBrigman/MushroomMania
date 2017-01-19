@@ -1,3 +1,5 @@
+//configures the angular app "app", and sets up the root controller
+
 const app = angular
 .module("mushroomMania", ["ngRoute"])
 .config(($routeProvider)=>{
@@ -8,37 +10,3 @@ const app = angular
     })
 })
 // end of config
-.controller("RootCtrl", function ($scope, mushroomFactory, poisonFilterFactory) {
-  console.log('ROOT')
-  mushroomFactory
-  .getMushrooms().
-  then((mushrooms)=>{
-    $scope.mushroomList = mushrooms;
-  })
-  $scope.poison = () => {
-
-      poisonFilterFactory.filterPoison(false)
-      .then((response) => {
-        $scope.mushroomList = response;
-        console.log("response from poison filter", $scope.mushroomList)
-      })
-    }
-    $scope.unPoison = () => {
-
-      poisonFilterFactory.filterPoison(true)
-      .then((response) => {
-        $scope.mushroomList = response;
-        console.log("response from UNpoison filter", $scope.mushroomList)
-      })
-    }
-    $scope.allmushrooms = () => {
-
-      mushroomFactory
-      .getMushrooms().
-      then((mushrooms)=>{
-      $scope.mushroomList = mushrooms;
-      })
-    }
-
-})
-// end of controller
