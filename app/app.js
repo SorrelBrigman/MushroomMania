@@ -47,7 +47,7 @@ angular
   return {
     getMushrooms : () => {
       return $http
-      .get("mushrooms.json")
+      .get("https://mushroommaniaskb.firebaseio.com/.json")
       .then((response)=>{
 
 
