@@ -32,6 +32,15 @@ angular
         console.log("response from UNpoison filter", $scope.mushroomList)
       })
     }
+    $scope.allmushrooms = () => {
+
+      mushroomFactory
+      .getMushrooms().
+      then((mushrooms)=>{
+      $scope.mushroomList = mushrooms;
+      })
+    }
+
 })
 // end of controller
 .factory("mushroomFactory", ($http)=>{
