@@ -1,14 +1,23 @@
 <h1>My Mushrooms</h1>
 
-<input type="text" placeholder="search for mushrooms">
+<input type="text" placeholder="search for mushrooms" ng-model="searchMushrooms">
 
-<div class="btn-group" data-toggle="buttons">
+<div class="btn-group" data-toggle="buttons" >
 
-  <label class="btn btn-primary">
+  <label class="btn btn-primary" ng-click="poison()">
     <input type="radio" name="options" > Poisonous
   </label>
-  <label class="btn btn-primary">
+  <label class="btn btn-primary" ng-click="unPoison()">
     <input type="radio" name="options"> Non-poisonous
   </label>
 
+</div>
+
+<div ng-repeat="(key, value) in mushroomList | filter: searchMushrooms track by $index">
+
+  <h4>{{value.name}}</h4>
+  <p>{{value.description}}</p>
+
+  <h5 ng-if="value.edible == true">Non-poisonous</h5>
+  <h5 ng-if="value.edible !== true">Poisonous</h5>
 </div>
